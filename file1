@@ -1,38 +1,17 @@
-# Python program to find H.C.F of two numbers
+#!/bin/bash
+set -e
+sudo apt update -y
+sudo apt upgrade -y
+sudo apt install -y openjdk-17-jdk
+java -version
+curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key | sudo tee \
+  /usr/share/keyrings/jenkins-keyring.asc > /dev/null
 
-# define a function
-def compute_hcf(x, y):
-
-# choose the smaller number
-    if x > y:
-        smaller = y
-    else:
-        smaller = x
-    for i in range(1, smaller+1):
-        if((x % i == 0) and (y % i == 0)):
-            hcf = i 
-    return hcf
-
-num1 = 54 
-num2 
-
-print("The H.C.F. is", compute_hcf(num1, num2))# Python program to find H.C.F of two numbers
-
-# define a function
-def compute_hcf(x, y):
-
-# choose the smaller number
-    if x > y:
-        smaller = y
-    else:
-        smaller = x
-    for i in range(1, smaller+1):
-        if((x % i == 0) and (y % i == 0)):
-            hcf = i 
-    return hcf
-
-num1 = 54 
-num2 
-
-print("The H.C.F. is", compute_hcf(num1, num2))
-
+echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+  https://pkg.jenkins.io/debian-stable binary/ | sudo tee \
+  /etc/apt/sources.list.d/jenkins.list > /dev/null
+sudo apt update -y
+sudo apt install -y jenkins
+sudo systemctl start jenkins
+sudo systemctl enable jenkins
+sudo systemctl status jenkins
